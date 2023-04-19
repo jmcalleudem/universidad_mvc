@@ -1,0 +1,24 @@
+﻿* Nombre de todas las facultades
+Select Nombre from Facultad
+
+* Ids de los estudiantes que han perdido materias
+select EstudianteId from EstudianteGrupo where Nota < 3
+
+* Nombres de los estudiantes de la carrera con id X
+select Nombre from Estudiante where CarreraId = 1
+
+* Información completa de carreras creadas después del 2020
+select * from Carrera where FechaCreacion > '2020-12-31'
+
+* Nombre y semestre de grupos activos que tengan cantidad máxima de estudiante entre 29 y 31
+select Nombre, Semestre from Grupo where Activo = 1 and CantMaxEstudiantes between 29 and 31
+
+* Cuántos estudiantes tiene la carrera con Id X
+select count(*) as Conteo from Estudiante where CarreraId = 1
+
+* Mostrar a todos los profesores y el nombre de la facultad a la que pertenecen
+select p.Nombre, f.Nombre from Profesor p join Facultad f on p.FacultadId = f.Id
+
+* Mostrar el nombre de cada estudiante con su promedio acumulado de toda la carrera ordenado descendentemente
+select e.nombre, avg(eg.Nota) as avg from Estudiante e join EstudianteGrupo eg on e.id = eg.EstudianteId 
+group by e.Nombre order by avg DESC
