@@ -22,3 +22,6 @@ select p.Nombre, f.Nombre from Profesor p join Facultad f on p.FacultadId = f.Id
 * Mostrar el nombre de cada estudiante con su promedio acumulado de toda la carrera ordenado descendentemente
 select e.nombre, avg(eg.Nota) as avg from Estudiante e join EstudianteGrupo eg on e.id = eg.EstudianteId 
 group by e.Nombre order by avg DESC
+
+Documentación SQL: https://www.w3schools.com/sql/
+Un juego: https://mystery.knightlab.com/
