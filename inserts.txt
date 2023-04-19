@@ -1,8 +1,8 @@
-﻿insert into Universidad values("Universidad 1")
+﻿insert into Universidad values('Universidad 1')
 
-insert into Facultad values("Facultad 1",1)
-insert into Facultad values("Facultad 2",1)
-insert into Facultad values("Facultad 3",1)
+insert into Facultad values('Facultad 1',1)
+insert into Facultad values('Facultad 2',1)
+insert into Facultad values('Facultad 3',1)
 
 insert into Carrera values('carrera0','2004-10-28','Posgrado',2)
 insert into Carrera values('carrera1','2003-8-25','Pregrado',2)
