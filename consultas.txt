@@ -25,3 +25,39 @@ group by e.Nombre order by avg DESC
 
 Documentación SQL: https://www.w3schools.com/sql/
 Un juego: https://mystery.knightlab.com/
+
+Otras consultas:
+
+* Distinct --> mostrar las cantidades máximas de los grupos sin repetir
+select distinct CantMaxEstudiantes from Grupo
+
+* In --> mostrar las notas de los estudiantes del cuarto semestre
+select Nota from EstudianteGrupo where EstudianteId in (select Id from Estudiante where Semestre = 4)
+
+* Top --> mostrar las notas de los 10 primeros estudiantes del cuarto semestre
+select top 10 Nota from EstudianteGrupo where EstudianteId in (select Id from Estudiante where Semestre = 4) 
+
+* Like --> mostrar los estudiantes con nombre terminado en 1
+select * from Estudiante where Nombre like '%1'
+Otros ejemplos: https://www.w3schools.com/sql/sql_like.asp
+
+* Union --> mostrar los nombres de todos los estudiantes y los profesores
+select Nombre from Estudiante union select Nombre from Profesor
+
+* Having --> where para consultas agregadas --> mostrar el promedio por estudiante siempre y cuando su id sea menor a 10
+select avg(eg.Nota) as avg from EstudianteGrupo eg group by EstudianteId having EstudianteId < 10
+
+* Exists --> mostrar los nombres de los estudiantes y su semestre, si existen, que tengan promedio mayor a 4
+select e.Nombre, e.Semestre from Estudiante e 
+where exists(select avg(eg.Nota) as average from 
+EstudianteGrupo eg group by EstudianteId having EstudianteId = e.Id)
+
+Retos
+
+* Mostrar el nombre de la carrera con más estudiantes
+* Mostrar el nombre del curso con más estudiantes y la carrera a la que pertenece 
+* Mostrar el nombre de la facultad con la carrera más vieja 
+* Mostrar los nombres de los profesores que dictan menos de 7 cursos
+* Mostrar el nombre de cada estudiante, su semestre, el nombre de su carrera, y
+  la cantidad de grupos en los que está matriculado
+* Mostrar el nombre de todas las carreras de la facultad con más carreras y con menos carreras
